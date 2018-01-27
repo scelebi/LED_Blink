@@ -198,24 +198,21 @@ void TIM2_IRQHandler(void)
 			if (dongusayicisi == 0)
 			{	
 			HAL_GPIO_TogglePin(Mavi_GPIO_Port, Mavi_Pin);
-			HAL_GPIO_TogglePin(Kirmizi_GPIO_Port, Kirmizi_Pin);
-			HAL_GPIO_TogglePin(Turuncu_GPIO_Port, Turuncu_Pin);
-		  HAL_GPIO_TogglePin(Yesil_GPIO_Port, Yesil_Pin);
 			}
-//			else if (dongusayicisi == 1)
-//			{
-//				HAL_GPIO_TogglePin(Kirmizi_GPIO_Port, Kirmizi_Pin);
-//			}
-//		  else if (dongusayicisi == 2)
-//			{
-//				HAL_GPIO_TogglePin(Turuncu_GPIO_Port, Turuncu_Pin);
-//			}		
-//      else if (dongusayicisi == 3)
-//			{
-//				HAL_GPIO_TogglePin(Yesil_GPIO_Port, Yesil_Pin);
-//			}				
+			else if (dongusayicisi == 1)
+			{
+				HAL_GPIO_TogglePin(Kirmizi_GPIO_Port, Kirmizi_Pin);
+			}
+		  else if (dongusayicisi == 2)
+			{
+				HAL_GPIO_TogglePin(Turuncu_GPIO_Port, Turuncu_Pin);
+			}		
+      else if (dongusayicisi == 3)
+			{
+				HAL_GPIO_TogglePin(Yesil_GPIO_Port, Yesil_Pin);
+			}				
 			dongusayicisi ++ ;
-			if (dongusayicisi > 1)
+			if (dongusayicisi > 3)
 			{
 			dongusayicisi = 0;
 			}
