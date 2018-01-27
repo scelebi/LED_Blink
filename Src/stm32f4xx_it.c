@@ -36,7 +36,7 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t dongusayicisi = 0;
+int8_t dongusayicisi = 0;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -194,28 +194,27 @@ void TIM2_IRQHandler(void)
 	
 	if (HAL_GPIO_ReadPin(Button_GPIO_Port,Button_Pin) == 1)
 	{
-		
-			if (dongusayicisi == 0)
-			{	
-			HAL_GPIO_TogglePin(Mavi_GPIO_Port, Mavi_Pin);
-			}
-			else if (dongusayicisi == 1)
-			{
-				HAL_GPIO_TogglePin(Kirmizi_GPIO_Port, Kirmizi_Pin);
-			}
-		  else if (dongusayicisi == 2)
-			{
-				HAL_GPIO_TogglePin(Turuncu_GPIO_Port, Turuncu_Pin);
-			}		
-      else if (dongusayicisi == 3)
-			{
-				HAL_GPIO_TogglePin(Yesil_GPIO_Port, Yesil_Pin);
-			}				
-			dongusayicisi ++ ;
-			if (dongusayicisi > 3)
-			{
-			dongusayicisi = 0;
-			}
+		if(dongusayicisi == 0)
+		{
+			HAL_GPIO_TogglePin (Mavi_GPIO_Port, Mavi_Pin);
+		}
+		else if (dongusayicisi == 1)
+		{
+			HAL_GPIO_TogglePin (Yesil_GPIO_Port, Yesil_Pin);
+		}
+		else if (dongusayicisi == 2)
+		{
+			HAL_GPIO_TogglePin (Turuncu_GPIO_Port, Turuncu_Pin);
+		}
+		else if (dongusayicisi == 3)
+		{
+			HAL_GPIO_TogglePin (Kirmizi_GPIO_Port, Kirmizi_Pin);
+		}
+		dongusayicisi-- ;
+		if (dongusayicisi < 0)
+		{
+		dongusayicisi = 3;
+		}
 	}
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
